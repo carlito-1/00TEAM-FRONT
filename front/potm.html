@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Jugador del Mes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .players {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .player {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 200px;
+    }
+
+    .player img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .player button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .player button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vota al Jugador del Mes</h1>
+
+  <div class="players">
+    <div class="player">
+      <img src="public/alberto.png" alt="Jugador 1">
+      <h3>Jugador 1</h3>
+      <button onclick="votar('Jugador 1')">Votar</button>
+    </div>
+    <div class="player">
+      <img src="public/eneoo.png" alt="Jugador 2">
+      <h3>Jugador 2</h3>
+      <button onclick="votar('Jugador 2')">Votar</button>
+    </div>
+    <div class="player">
+      <img src="public/juan.png" alt="Jugador 3">
+      <h3>Jugador 3</h3>
+      <button onclick="votar('Jugador 3')">Votar</button>
+    </div>
+  </div>
+
+  <div id="message"></div>
+
+  <script>
+    function votar(jugador) {
+      if (localStorage.getItem("votoJugadorDelMes")) {
+        document.getElementById("message").innerText = "Ya has votado este mes.";
+        return;
+      }
+
+      localStorage.setItem("votoJugadorDelMes", jugador);
+      document.getElementById("message").innerText = `Gracias por votar por ${jugador}`;
+
+      document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+    }
+
+    // Al cargar la página, comprobar si ya votó
+    window.onload = function() {
+      const voto = localStorage.getItem("votoJugadorDelMes");
+      if (voto) {
+        document.getElementById("message").innerText = `Ya has votado este mes por ${voto}.`;
+        document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+      }
+    };
+  </script>
+
+</body>
+</html>

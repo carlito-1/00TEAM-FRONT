@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estadísticas de Jugadores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .player-img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .stat-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container my-5">
+    
+    <!-- Selector de temporada -->
+    <div class="mb-3">
+      <label for="selectTemporada" class="form-label fw-bold">Selecciona una temporada:</label>
+      <select class="form-select" id="selectTemporada"></select>
+    </div>
+
+    <!-- Selector de jugador -->
+    <div class="mb-4">
+      <label for="selectJugador" class="form-label fw-bold">Selecciona un jugador:</label>
+      <select class="form-select" id="selectJugador"></select>
+    </div>
+
+    <div class="row g-4 align-items-center">
+      
+      <!-- Foto del jugador -->
+      <div class="col-md-4">
+        <img id="fotoJugador" class="player-img shadow" src="" alt="Foto del Jugador" />
+      </div>
+
+      <!-- Info + estadísticas -->
+      <div class="col-md-8">
+        <h2 id="nombreJugador" class="text-primary">Nombre</h2>
+        <p class="text-muted mb-2">Posición: <span id="posicionJugador"></span></p>
+        <p class="text-muted mb-2">Equipo: <span id="equipoJugador"></span></p>
+        <p class="text-muted mb-4">Dorsal: <span id="dorsalJugador"></span></p>
+
+        <div class="row">
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="bg-white p-3 rounded shadow-sm text-center">
+              <span class="stat-label">Partidos:</span><br />
+              <span id="partidosJugador"></span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="bg-white p-3 rounded shadow-sm text-center">
+              <span class="stat-label">Goles:</span><br />
+              <span id="golesJugador"></span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="bg-white p-3 rounded shadow-sm text-center">
+              <span class="stat-label">Asistencias:</span><br />
+              <span id="asistenciasJugador"></span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="bg-white p-3 rounded shadow-sm text-center">
+              <span class="stat-label">MVPs:</span><br />
+              <span id="mvpjugador"></span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-secondary mt-3" onclick="window.history.back()">Volver</button>
+      </div>
+    </div>
+  </div>
+  <script src="jugadores.js"></script>
+  <script>
+
+
+    const selectTemporada = document.getElementById("selectTemporada");
+    const selectJugador = document.getElementById("selectJugador");
+
+    // Cargar temporadas en el selector
+    Object.keys(datosPorTemporada).forEach(temp => {
+      const option = document.createElement("option");
+      option.value = temp;
+      option.textContent = temp;
+      selectTemporada.appendChild(option);
+    });
+
+    // Actualizar jugadores según temporada
+    function actualizarJugadoresPorTemporada() {
+      const temporadaSeleccionada = selectTemporada.value;
+      const jugadores = datosPorTemporada[temporadaSeleccionada];
+
+      // Limpiar y llenar el select de jugadores
+      selectJugador.innerHTML = "";
+      jugadores.forEach((j, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = j.nombre;
+        selectJugador.appendChild(option);
+      });
+
+      // Mostrar el primer jugador por defecto
+      mostrarJugador(jugadores[0]);
+    }
+
+    // Mostrar datos del jugador
+    function mostrarJugador(jugador) {
+      document.getElementById("nombreJugador").textContent = jugador.nombre;
+      document.getElementById("posicionJugador").textContent = jugador.posicion;
+      document.getElementById("equipoJugador").textContent = jugador.equipo;
+      document.getElementById("dorsalJugador").textContent = jugador.dorsal;
+      document.getElementById("partidosJugador").textContent = jugador.partidos;
+      document.getElementById("golesJugador").textContent = jugador.goles;
+      document.getElementById("asistenciasJugador").textContent = jugador.asistencias;
+      document.getElementById("mvpjugador").textContent = jugador.mvp;
+      document.getElementById("fotoJugador").src = jugador.foto;
+    }
+
+    // Eventos
+    selectTemporada.addEventListener("change", actualizarJugadoresPorTemporada);
+    selectJugador.addEventListener("change", () => {
+      const temporada = selectTemporada.value;
+      const jugador = datosPorTemporada[temporada][selectJugador.value];
+      mostrarJugador(jugador);
+    });
+
+    // Cargar temporada inicial
+    selectTemporada.value = Object.keys(datosPorTemporada)[0];
+    actualizarJugadoresPorTemporada();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

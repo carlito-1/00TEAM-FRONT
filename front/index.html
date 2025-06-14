@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equipo de Fútbol</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+  <div class="container my-5">
+
+    <!-- Encabezado con botones -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+      <h1 class="text-primary mb-0" id="nombreEquipo"></h1>
+      <div class="btn-group" role="group">
+        <button class="btn btn-primary" id="btnVotar">Votar Jugador del Mes</button>
+        <button class="btn btn-outline-primary" id="btnCalificaciones">Ver Calificaciones</button>
+        <button class="btn btn-outline-primary" id="btnEstadisticas">Ver Estadísticas</button>
+      </div>
+    </div>
+
+    <!-- Selector de temporada -->
+    <div class="mb-4">
+      <label for="temporadaSelect" class="form-label fw-bold">Selecciona una temporada:</label>
+      <select class="form-select" id="temporadaSelect"></select>
+    </div>
+
+    <!-- Contenedor de jornadas -->
+    <div class="row" id="jornadasContainer"></div>
+  </div>
+  <script src="temporadas.js"></script>
+  <script>
+
+
+
+    document.getElementById("nombreEquipo").textContent = equipo.nombre;
+
+    const temporadaSelect = document.getElementById("temporadaSelect");
+    const jornadasContainer = document.getElementById("jornadasContainer");
+
+    equipo.temporadas.forEach((temporada, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = temporada.año;
+      temporadaSelect.appendChild(option);
+    });
+
+    temporadaSelect.addEventListener("change", () => {
+      const index = temporadaSelect.value;
+      mostrarJornadas(equipo.temporadas[index]);
+    });
+
+    function mostrarJornadas(temporada) {
+      jornadasContainer.innerHTML = "";
+      temporada.jornadas.forEach(jornada => {
+        const card = document.createElement("div");
+        card.className = "col-md-6 col-lg-4 mb-4";
+
+        card.innerHTML = `
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title">Jornada ${jornada.numero} vs ${jornada.rival}</h5>
+              <p class="card-text"><strong>Resultado:</strong> ${jornada.resultado}</p>
+              <ul class="list-group list-group-flush">
+                ${jornada.jugadores.map(j =>
+                    `<li class="list-group-item">⚽ ${j.nombre} — ${j.goles} goles</li>`
+                    ).join('')}
+
+              </ul>
+            </div>
+          </div>
+        `;
+        jornadasContainer.appendChild(card);
+      });
+    }
+
+    mostrarJornadas(equipo.temporadas[0]);
+
+    // Listeners de botones (funciones vacías por ahora)
+    document.getElementById("btnVotar").addEventListener("click", () => {
+      alert("Funcionalidad para votar al jugador del mes próximamente.");
+      window.location.href = "potm.html"
+       
+    });
+
+    document.getElementById("btnCalificaciones").addEventListener("click", () => {
+       window.location.href = "clasificacion.html"
+    });
+
+    document.getElementById("btnEstadisticas").addEventListener("click", () => {
+        window.location.href = "estadisticas.html"
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
