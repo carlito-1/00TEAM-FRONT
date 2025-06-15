@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,15 +12,17 @@
       border-radius: 10px;
       object-fit: cover;
     }
+
     .stat-label {
       font-weight: bold;
     }
   </style>
 </head>
+
 <body class="bg-light">
 
   <div class="container my-5">
-    
+
     <!-- Selector de temporada -->
     <div class="mb-3">
       <label for="selectTemporada" class="form-label fw-bold">Selecciona una temporada:</label>
@@ -33,7 +36,7 @@
     </div>
 
     <div class="row g-4 align-items-center">
-      
+
       <!-- Foto del jugador -->
       <div class="col-md-4">
         <img id="fotoJugador" class="player-img shadow" src="" alt="Foto del Jugador" />
@@ -97,18 +100,31 @@
       const temporadaSeleccionada = selectTemporada.value;
       const jugadores = datosPorTemporada[temporadaSeleccionada];
 
+      // Guardar el nombre del jugador actual (si hay uno)
+      const jugadorActualNombre = selectJugador.options[selectJugador.selectedIndex]?.textContent;
+
       // Limpiar y llenar el select de jugadores
       selectJugador.innerHTML = "";
+      let jugadorASeleccionar = jugadores[0]; // Por defecto el primero
+
       jugadores.forEach((j, index) => {
         const option = document.createElement("option");
         option.value = index;
         option.textContent = j.nombre;
+
+        // Si este jugador tiene el mismo nombre que el anterior, seleccionarlo
+        if (j.nombre === jugadorActualNombre) {
+          option.selected = true;
+          jugadorASeleccionar = j;
+        }
+
         selectJugador.appendChild(option);
       });
 
-      // Mostrar el primer jugador por defecto
-      mostrarJugador(jugadores[0]);
+      // Mostrar jugador seleccionado
+      mostrarJugador(jugadorASeleccionar);
     }
+
 
     // Mostrar datos del jugador
     function mostrarJugador(jugador) {
@@ -132,10 +148,13 @@
     });
 
     // Cargar temporada inicial
-    selectTemporada.value = Object.keys(datosPorTemporada)[0];
+    let temporadaactual = "2024/2025";
+    selectTemporada.value = temporadaactual
+    //Object.keys(datosPorTemporada)[0];
     actualizarJugadoresPorTemporada();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
