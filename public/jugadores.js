@@ -2,7 +2,7 @@ const datosPorTemporada = {
     "2024/2025": [
     {
   nombre: "Juan",
-  posicion: "Defens",
+  posicion: "Defensa",
   equipo: "00 TEAM",
   dorsal: 5,
   partidos: 19,
@@ -112,6 +112,115 @@ const datosPorTemporada = {
 }
     ],
   "2025/2026" : [
-    
+     {
+  nombre: "Juan",
+  posicion: "Defensa",
+  equipo: "00 TEAM",
+  dorsal: 5,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "juan.png"
+},
+{
+  nombre: "Carralero",
+  posicion: "Defensa",
+  equipo: "00 TEAM",
+  dorsal: 3,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "carralero.png"
+},
+{
+  nombre: "Nico",
+  posicion: "Delantero",
+  equipo: "00 TEAM",
+  dorsal: 8,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "nico.png"
+},
+{
+  nombre: "Ivan",
+  posicion: "Portero",
+  equipo: "00 TEAM",
+  dorsal: 21,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "ivan.png"
+},
+{
+  nombre: "Alberto",
+  posicion: "Banda",
+  equipo: "00 TEAM",
+  dorsal: 9,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "alberto.png"
+},
+{
+  nombre: "Pedro",
+  posicion: "Mediocentro",
+  equipo: "00 TEAM",
+  dorsal: 10,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "pedro.png"
+},
+{
+  nombre: "Eneoo",
+  posicion: "Banda",
+  equipo: "00 TEAM",
+  dorsal: 11,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "eneoo.png"
+},
+{
+  nombre: "Dani",
+  posicion: "Mediocentro",
+  equipo: "00 TEAM",
+  dorsal: 7,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "dani.png"
+},
+{
+  nombre: "Victor",
+  posicion: "Defensa",
+  equipo: "00 TEAM",
+  dorsal: 7,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "victor.png"
+},
+{
+  nombre: "Jora",
+  posicion: "Delantero",
+  equipo: "00 TEAM",
+  dorsal: 20,
+  partidos: 0,
+  goles: 0,
+  asistencias: 0,
+  mvp : 0,
+  foto: "jora.png"
+}
   ]
 };
