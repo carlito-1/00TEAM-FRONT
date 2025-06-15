@@ -9,7 +9,7 @@ const datosPorTemporada = {
   goles: 7,
   asistencias: 7,
   mvp : 2,
-  foto: "public/juan.png"
+  foto: "juan.png"
 },
 {
   nombre: "Carralero",
@@ -20,7 +20,7 @@ const datosPorTemporada = {
   goles: 1,
   asistencias: 3,
   mvp : 1,
-  foto: "public/carralero.png"
+  foto: "carralero.png"
 },
 {
   nombre: "Nico",
@@ -31,7 +31,7 @@ const datosPorTemporada = {
   goles: 14,
   asistencias: 9,
   mvp : 6,
-  foto: "public/nico.png"
+  foto: "nico.png"
 },
 {
   nombre: "Ivan",
@@ -42,7 +42,7 @@ const datosPorTemporada = {
   goles: 0,
   asistencias: 0,
   mvp : 2,
-  foto: "public/ivan.png"
+  foto: "ivan.png"
 },
 {
   nombre: "Alberto",
@@ -53,7 +53,7 @@ const datosPorTemporada = {
   goles: 10,
   asistencias: 7,
   mvp : 1,
-  foto: "public/alberto.png"
+  foto: "alberto.png"
 },
 {
   nombre: "Pedro",
@@ -64,7 +64,7 @@ const datosPorTemporada = {
   goles: 6,
   asistencias: 3,
   mvp : 1,
-  foto: "public/pedro.png"
+  foto: "pedro.png"
 },
 {
   nombre: "Eneoo",
@@ -75,7 +75,7 @@ const datosPorTemporada = {
   goles: 7,
   asistencias: 5,
   mvp : 3,
-  foto: "public/eneoo.png"
+  foto: "eneoo.png"
 },
 {
   nombre: "Dani",
@@ -86,7 +86,7 @@ const datosPorTemporada = {
   goles: 9,
   asistencias: 4,
   mvp : 1,
-  foto: "public/dani.png"
+  foto: "dani.png"
 },
 {
   nombre: "Victor",
@@ -97,7 +97,7 @@ const datosPorTemporada = {
   goles: 3,
   asistencias: 2,
   mvp : 0,
-  foto: "public/victor.png"
+  foto: "victor.png"
 },
 {
   nombre: "Jora",
@@ -108,7 +108,7 @@ const datosPorTemporada = {
   goles: 7,
   asistencias: 2,
   mvp : 1,
-  foto: "public/jora.png"
+  foto: "jora.png"
 }
     ],
   "2025/2026" : [
